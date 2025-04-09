@@ -1,4 +1,3 @@
-import React from 'react';
 import { Menu } from 'antd';
 import type { MenuProps } from 'antd';
 import { mainMenuItems } from './constants';

@@ -7,12 +7,13 @@ import { useNavigate, useLocation } from 'react-router-dom';
 export const MainMenu = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  
+
   // Set the selected key based on current path
-  const selectedKey = location.pathname === '/' 
-    ? 'all-milestones' 
-    : location.pathname.substring(1);
-  
+  const selectedKey =
+    location.pathname === '/'
+      ? 'all-milestones'
+      : location.pathname.substring(1);
+
   const handleMenuClick: MenuProps['onClick'] = (e) => {
     navigate(`/${e.key}`);
   };

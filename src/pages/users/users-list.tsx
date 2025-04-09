@@ -1,5 +1,14 @@
 import React, { useState } from 'react';
-import { Typography, Space, Table, Card, Avatar, Button, Popconfirm, message } from 'antd';
+import {
+  Typography,
+  Space,
+  Table,
+  Card,
+  Avatar,
+  Button,
+  Popconfirm,
+  message,
+} from 'antd';
 import { UserOutlined, DeleteOutlined } from '@ant-design/icons';
 
 const { Title } = Typography;
@@ -12,13 +21,13 @@ export const UsersList = () => {
     { id: '3', name: 'Michael Johnson' },
     { id: '4', name: 'Sarah Williams' },
   ]);
-  
+
   const handleDelete = (id: string) => {
-    const updatedUsers = users.filter(user => user.id !== id);
+    const updatedUsers = users.filter((user) => user.id !== id);
     setUsers(updatedUsers);
     message.success('User deleted successfully');
   };
-  
+
   const columns = [
     {
       title: 'User',
@@ -47,7 +56,7 @@ export const UsersList = () => {
           </Button>
         </Popconfirm>
       ),
-    }
+    },
   ];
 
   return (
@@ -56,8 +65,8 @@ export const UsersList = () => {
       <Card>
         <Table
           rowKey="id"
-          dataSource={users} 
-          columns={columns} 
+          dataSource={users}
+          columns={columns}
           pagination={{ pageSize: 10 }}
         />
       </Card>

@@ -1,9 +1,9 @@
-import { MainMenu } from "./components/main-menu/main-menu"
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import { MilestonesList } from "./pages/milestones/milestones-list"
-import { CreateMilestone } from "./pages/milestones/create-milestone"
-import { UsersList } from "./pages/users/users-list"
-import { Layout } from "antd"
+import { MainMenu } from './components/main-menu/main-menu';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { MilestonesList } from './pages/milestones/milestones-list';
+import { CreateMilestone } from './pages/milestones/create-milestone';
+import { UsersList } from './pages/users/users-list';
+import { Layout } from 'antd';
 
 const { Header, Content } = Layout;
 
@@ -12,7 +12,7 @@ function App() {
     <Router>
       <Layout style={{ minHeight: '100vh' }}>
         <Header style={{ padding: 0 }}>
-          <MainMenu/>
+          <MainMenu />
         </Header>
         <Content style={{ padding: '24px' }}>
           <Routes>
@@ -24,7 +24,7 @@ function App() {
         </Content>
       </Layout>
     </Router>
-  )
+  );
 }
 
-export default App
+export default App;

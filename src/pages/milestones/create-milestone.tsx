@@ -10,7 +10,11 @@ export const CreateMilestone = () => {
       <Title level={2}>Create New Milestone</Title>
       <Card>
         <Form layout="vertical">
-          <Form.Item label="Title" name="title" rules={[{ required: true, message: 'Please enter a title' }]}>
+          <Form.Item
+            label="Title"
+            name="title"
+            rules={[{ required: true, message: 'Please enter a title' }]}
+          >
             <Input placeholder="Milestone title" />
           </Form.Item>
           <Form.Item label="Description" name="description">

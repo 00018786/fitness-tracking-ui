@@ -1,7 +1,7 @@
 import { Typography, Space, Card, Table, Button, message, Avatar, Tag } from 'antd';
 import { useEffect, useState } from 'react';
 import { fetchMilestones } from '../../services/milestoneService';
-import { fetchUsers, fetchUserById } from '../../services/userService';
+import { fetchUsers } from '../../services/userService';
 import { Milestone } from '../../services/types';
 import { User } from '../../services/userService';
 import { DeleteOutlined, EditOutlined, UserOutlined } from '@ant-design/icons';

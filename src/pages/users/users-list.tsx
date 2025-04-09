@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   Typography,
   Space,
@@ -9,23 +9,42 @@ import {
   Popconfirm,
   message,
 } from 'antd';
-import { UserOutlined, DeleteOutlined } from '@ant-design/icons';
+import { UserOutlined, DeleteOutlined, EditOutlined } from '@ant-design/icons';
+import { fetchUsers } from '../../services/userService';
+import { User } from '../../services/userService';
 
 const { Title } = Typography;
 
 export const UsersList = () => {
-  // Sample data with only user names
-  const [users, setUsers] = useState([
-    { id: '1', name: 'John Doe' },
-    { id: '2', name: 'Jane Smith' },
-    { id: '3', name: 'Michael Johnson' },
-    { id: '4', name: 'Sarah Williams' },
-  ]);
+  const [users, setUsers] = useState<User[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const handleDelete = (id: string) => {
-    const updatedUsers = users.filter((user) => user.id !== id);
-    setUsers(updatedUsers);
-    message.success('User deleted successfully');
+  const loadUsers = async () => {
+    try {
+      setLoading(true);
+      const data = await fetchUsers();
+      setUsers(data);
+    } catch (error) {
+      message.error('Failed to load users');
+      console.error('Error loading users:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    loadUsers();
+  }, []);
+
+  const handleDelete = async (id: number) => {
+    try {
+      // TODO: Implement delete user API call
+      message.success('User deleted successfully');
+      loadUsers(); // Reload users after deletion
+    } catch (error) {
+      message.error('Failed to delete user');
+      console.error('Error deleting user:', error);
+    }
   };
 
   const columns = [
@@ -43,18 +62,23 @@ export const UsersList = () => {
     {
       title: 'Actions',
       key: 'actions',
-      render: (_item: any, record: { id: string }) => (
-        <Popconfirm
-          title="Delete user"
-          description="Are you sure you want to delete this user?"
-          onConfirm={() => handleDelete(record.id)}
-          okText="Yes"
-          cancelText="No"
-        >
-          <Button danger icon={<DeleteOutlined />} size="small">
-            Delete
+      render: (_: any, record: User) => (
+        <Space>
+          <Button type="primary" icon={<EditOutlined />} size="small">
+            Edit
           </Button>
-        </Popconfirm>
+          <Popconfirm
+            title="Delete user"
+            description="Are you sure you want to delete this user?"
+            onConfirm={() => handleDelete(record.id)}
+            okText="Yes"
+            cancelText="No"
+          >
+            <Button danger icon={<DeleteOutlined />} size="small">
+              Delete
+            </Button>
+          </Popconfirm>
+        </Space>
       ),
     },
   ];
@@ -67,6 +91,7 @@ export const UsersList = () => {
           rowKey="id"
           dataSource={users}
           columns={columns}
+          loading={loading}
           pagination={{ pageSize: 10 }}
         />
       </Card>

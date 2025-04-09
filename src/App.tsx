@@ -1,34 +1,29 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { MainMenu } from "./components/main-menu/main-menu"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import { MilestonesList } from "./pages/milestones/milestones-list"
+import { CreateMilestone } from "./pages/milestones/create-milestone"
+import { UsersList } from "./pages/users/users-list"
+import { Layout } from "antd"
+
+const { Header, Content } = Layout;
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <Router>
+      <Layout style={{ minHeight: '100vh' }}>
+        <Header style={{ padding: 0 }}>
+          <MainMenu/>
+        </Header>
+        <Content style={{ padding: '24px' }}>
+          <Routes>
+            <Route path="/" element={<MilestonesList />} />
+            <Route path="/all-milestones" element={<MilestonesList />} />
+            <Route path="/create-milestone" element={<CreateMilestone />} />
+            <Route path="/users" element={<UsersList />} />
+          </Routes>
+        </Content>
+      </Layout>
+    </Router>
   )
 }
 

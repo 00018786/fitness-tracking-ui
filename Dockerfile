@@ -1,20 +1,14 @@
-# Use an official Node.js runtime as a parent image
-FROM node:23-slim
+# Use an official Nginx image as the base image
+FROM nginx:alpine
 
-# Set the working directory
-WORKDIR /app
+# Set the working directory inside the container
+WORKDIR /usr/share/nginx/html
 
-# Copy package.json and package-lock.json
-COPY package*.json ./
+# Copy the build output from the dist folder to the Nginx HTML directory
+COPY dist /usr/share/nginx/html
 
-# Install dependencies
-RUN npm install
+# Expose port 80 for the web server
+EXPOSE 80
 
-# Copy the rest of the application code
-COPY . .
-
-# Expose the port the app runs on
-EXPOSE 3000
-
-# Start the application
-CMD ["npm", "start"]
+# Start Nginx when the container starts
+CMD ["nginx", "-g", "daemon off;"]

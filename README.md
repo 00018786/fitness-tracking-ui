@@ -1,5 +1,5 @@
 # Fitness Tracking UI
-
+https://github.com/00018786/fitness-tracking-ui
 Please consider that UI is not completed and not connected with all BE endpoints
 
 A modern React-based fitness tracking application built with Vite, TypeScript, and Ant Design.

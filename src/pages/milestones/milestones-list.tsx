@@ -91,7 +91,7 @@ export const MilestonesList = () => {
     {
       title: 'Actions',
       key: 'actions',
-      render: (_: any, record: Milestone) => (
+      render: (_: any, _record: Milestone) => (
         <Space>
           <Button type="primary" icon={<EditOutlined />} size="small">
             Edit

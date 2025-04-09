@@ -4,6 +4,10 @@ Please consider that UI is not completed and not connected with all BE endpoints
 
 A modern React-based fitness tracking application built with Vite, TypeScript, and Ant Design.
 
+# Deployment Link
+https://fitness-tracking-ui.onrender.com
+
+
 ## Prerequisites
 
 Before you begin, ensure you have the following installed:

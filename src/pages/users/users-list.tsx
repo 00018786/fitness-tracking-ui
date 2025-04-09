@@ -62,7 +62,7 @@ export const UsersList = () => {
     {
       title: 'Actions',
       key: 'actions',
-      render: (_: any, record: User) => (
+      render: (_: any, _record: User) => (
         <Space>
           <Button type="primary" icon={<EditOutlined />} size="small">
             Edit
@@ -70,7 +70,7 @@ export const UsersList = () => {
           <Popconfirm
             title="Delete user"
             description="Are you sure you want to delete this user?"
-            onConfirm={() => handleDelete(record.id)}
+            onConfirm={() => handleDelete(_record.id)}
             okText="Yes"
             cancelText="No"
           >

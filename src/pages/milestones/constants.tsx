@@ -1,5 +1,5 @@
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
-import { Typography, Space, Card, Table, Button, message } from 'antd';
+import { Space, Button } from 'antd';
 import { Milestone } from '../../services/types';
 
 export const milestoneColumns = [

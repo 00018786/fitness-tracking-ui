@@ -1,4 +1,4 @@
-import { Typography, Space, Card, Table, Button, message } from 'antd';
+import { Typography, Space, Card, Table, message } from 'antd';
 import { useEffect, useState } from 'react';
 import { fetchMilestones } from '../../services/milestoneService';
 import { Milestone } from '../../services/types';

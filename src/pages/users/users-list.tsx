@@ -36,7 +36,7 @@ export const UsersList = () => {
     loadUsers();
   }, []);
 
-  const handleDelete = async (id: number) => {
+  const handleDelete = async (_id: number) => {
     try {
       // TODO: Implement delete user API call
       message.success('User deleted successfully');
